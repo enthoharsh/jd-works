@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./adminchat.css";
 import { Tooltip, Upload } from "antd";
-import axios from "axios";
+// import axios from "axios";
 import {
-  FileImageOutlined,
-  FileTextOutlined,
-  VideoCameraOutlined,
-  SendOutlined,
+  // FileImageOutlined,
+  // FileTextOutlined,
+  // VideoCameraOutlined,
+  // SendOutlined,
   LoadingOutlined
 } from "@ant-design/icons";
 import { Button } from "antd";

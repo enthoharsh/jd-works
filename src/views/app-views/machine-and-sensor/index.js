@@ -6,7 +6,6 @@ import Filter from 'components/shared-components/Filter';
 import Icon from '@ant-design/icons/lib/components/Icon';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
-// import 'antd/dist/antd.css';
 
 const data = [
   {
