@@ -21,6 +21,7 @@ import {
 import { Table } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import EditModal from "./Stator Resistance/EditModal";
+import EditThermistor from "./Stator Resistance/AuxiliaryCheckEdits/EditThermistor";
 import EditSIModal from './Stator-Insulation/EditSIModal'
 import SRUpload from "./Stator Resistance/SRUpload";
 import SIUpload from "./Stator-Insulation/SIUpload";
@@ -29,6 +30,14 @@ import EditRRModal from "./Rotor-Resistance/EditRRModal";
 import EditRIModal from "./Rotor-Insulation/EditRIModal";
 import EditPolarizationIndexModal from "./Polarization-Index/EditPolarizationIndexModal";
 import EditSCModal from "./Surge-Compression/EditSCModal";
+import EditPT_100 from "./Stator Resistance/AuxiliaryCheckEdits/EditPT_100";
+import EditBrake from "./Stator Resistance/AuxiliaryCheckEdits/EditBrake";
+import EditOthers from "./Stator Resistance/AuxiliaryCheckEdits/EditOthers";
+import EditStatorResistance from "./Stator-Insulation/Stator_winding_electrical_tests/EditStatorResistance";
+import EditStatorInsulation from "./Stator-Insulation/Stator_winding_electrical_tests/EditStatorInsulation";
+
+
+
 let styles = {
   files: {
     listStyle: "none",
@@ -439,6 +448,8 @@ const AddNewLifeCycleEvent = () => {
   const [RREditModal, setRREditModal] = useState(false);
   const [RIEditModal, setRIEditModal] = useState(false);
   const [PIEditModal, setPIEditModal] = useState(false);
+  const [modalName,setModalName] = useState("");
+  console.log("Modal name: " + modalName);
   const [auxileryChecksHeater, setAuxileryChecksHeater] = useState({})
   const [auxileryChecksThermistor, setAuxileryChecksThermistor] = useState({})
   const [auxileryChecksThermostate, setAuxileryChecksThermostate] = useState({})
@@ -633,6 +644,7 @@ const AddNewLifeCycleEvent = () => {
       //   [name]: e.target.value,
       // });
     } else {
+
       setAuxileryChecksThermistor({
         ...auxileryChecksThermistor,
         [name]: { checked: true, value: e.target.value },
@@ -1624,7 +1636,15 @@ const AddNewLifeCycleEvent = () => {
         </div>
       </Modal>
       <EditSIModal SIEditModal={SIEditModal} setSIEditModal={setSIEditModal} />
-      <EditModal SREditModal={SREditModal} setSREditModal={setSREditModal} />
+      {/* <EditModal model={"heater"} SREditModal={SREditModal} setSREditModal={setSREditModal} /> */}
+      {modalName === "heater" && <EditModal  SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+    {modalName === "thermistor"  && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+    {modalName === "thermostat" && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+  {modalName ==="PT_100" && <EditPT_100 SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+  {modalName ==="brake" && <EditBrake SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+  {modalName === "others" && <EditOthers SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+  {modalName === "statorResistance" && <EditStatorResistance SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
+  {modalName === "statorInsulation" && <EditStatorInsulation SIEditModal={SIEditModal} setSIEditModal={setSIEditModal}/>}
       <EditRIModal RIEditModal={RIEditModal} setRIEditModal={setRIEditModal} />
       <EditPolarizationIndexModal PIEditModal={PIEditModal} setPIEditModal={setPIEditModal} />
       <EditSCModal SCEditModal={SCEditModal} setSCEditModal={setSCEditModal} />
@@ -3136,6 +3156,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("statorResistance");
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -3363,6 +3384,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation(); 
                             setSIEditModal(true)
+                            setModalName("statorInsulation")
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -4400,6 +4422,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("heater")
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -4575,7 +4598,8 @@ const AddNewLifeCycleEvent = () => {
                           </Button>
                           <Button onClick={(e)=>{
                             e.stopPropagation();
-                            setSREditModal(true)
+                            setSREditModal(true);
+                            setModalName("thermistor")
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -4701,6 +4725,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("thermostat")
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -4826,6 +4851,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("PT_100")
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -4951,6 +4977,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("brake");
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
@@ -5178,6 +5205,7 @@ const AddNewLifeCycleEvent = () => {
                           <Button onClick={(e)=>{
                             e.stopPropagation();
                             setSREditModal(true)
+                            setModalName("others");
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
