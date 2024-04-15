@@ -35,6 +35,8 @@ import EditBrake from "./Stator Resistance/AuxiliaryCheckEdits/EditBrake";
 import EditOthers from "./Stator Resistance/AuxiliaryCheckEdits/EditOthers";
 import EditStatorResistance from "./Stator-Insulation/Stator_winding_electrical_tests/EditStatorResistance";
 import EditStatorInsulation from "./Stator-Insulation/Stator_winding_electrical_tests/EditStatorInsulation";
+import FreeLoadTest from "./Free-Load-Test/FreeLoadTest";
+import EditFreeLoadTest from "./Free-Load-Test/EditFreeLoadTest";
 
 
 
@@ -442,13 +444,13 @@ const AddNewLifeCycleEvent = () => {
   const [SCEditModal, setSCEditModal] = useState(false)
   const [SIEditModal, setSIEditModal] = useState(false);
   const [SREditModal, setSREditModal] = useState(false);
-  const [SRUploadForm,setSRUploadForm] = useState(false);
-  const [SIUploadForm,setSIUploadForm] = useState(false);
-  const [RRUploadForm,setRRUploadForm] = useState(false);
+  const [SRUploadForm, setSRUploadForm] = useState(false);
+  const [SIUploadForm, setSIUploadForm] = useState(false);
+  const [RRUploadForm, setRRUploadForm] = useState(false);
   const [RREditModal, setRREditModal] = useState(false);
   const [RIEditModal, setRIEditModal] = useState(false);
   const [PIEditModal, setPIEditModal] = useState(false);
-  const [modalName,setModalName] = useState("");
+  const [modalName, setModalName] = useState("");
   console.log("Modal name: " + modalName);
   const [auxileryChecksHeater, setAuxileryChecksHeater] = useState({})
   const [auxileryChecksThermistor, setAuxileryChecksThermistor] = useState({})
@@ -1637,14 +1639,15 @@ const AddNewLifeCycleEvent = () => {
       </Modal>
       <EditSIModal SIEditModal={SIEditModal} setSIEditModal={setSIEditModal} />
       {/* <EditModal model={"heater"} SREditModal={SREditModal} setSREditModal={setSREditModal} /> */}
-      {modalName === "heater" && <EditModal  SREditModal={SREditModal} setSREditModal={setSREditModal} />}
-    {modalName === "thermistor"  && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-    {modalName === "thermostat" && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-  {modalName ==="PT_100" && <EditPT_100 SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-  {modalName ==="brake" && <EditBrake SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-  {modalName === "others" && <EditOthers SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-  {modalName === "statorResistance" && <EditStatorResistance SREditModal={SREditModal} setSREditModal={setSREditModal}/>}
-  {modalName === "statorInsulation" && <EditStatorInsulation SIEditModal={SIEditModal} setSIEditModal={setSIEditModal}/>}
+      {modalName === "heater" && <EditModal SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "thermistor" && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "thermostat" && <EditThermistor SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "PT_100" && <EditPT_100 SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "brake" && <EditBrake SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "others" && <EditOthers SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "statorResistance" && <EditStatorResistance SREditModal={SREditModal} setSREditModal={setSREditModal} />}
+      {modalName === "statorInsulation" && <EditStatorInsulation SIEditModal={SIEditModal} setSIEditModal={setSIEditModal} />}
+      {modalName === "FreeLoadTest" && <EditFreeLoadTest SREditModal={SREditModal} setSREditModal={setSIEditModal} />}
       <EditRIModal RIEditModal={RIEditModal} setRIEditModal={setRIEditModal} />
       <EditPolarizationIndexModal PIEditModal={PIEditModal} setPIEditModal={setPIEditModal} />
       <EditSCModal SCEditModal={SCEditModal} setSCEditModal={setSCEditModal} />
@@ -3148,12 +3151,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("statorResistance");
@@ -3282,7 +3285,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorWindingGlobalRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3299,7 +3302,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorWindingGlobalRadioChange("instrument", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3318,7 +3321,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3335,7 +3338,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorWindingGlobalRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -3375,14 +3378,14 @@ const AddNewLifeCycleEvent = () => {
                           >
                             +
                           </Button>
-                          <Button onClick={(e)=>{
-                            e.stopPropagation(); 
+                          <Button onClick={(e) => {
+                            e.stopPropagation();
                             setSIUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
-                            e.stopPropagation(); 
+                          <Button onClick={(e) => {
+                            e.stopPropagation();
                             setSIEditModal(true)
                             setModalName("statorInsulation")
                           }} className="bg-primary text-white mr-1">
@@ -3527,7 +3530,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorInsulationRadioChange("test_volt", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3544,7 +3547,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorInsulationRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3561,7 +3564,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorInsulationRadioChange("instrument", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3580,7 +3583,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3597,7 +3600,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             statorInsulationRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -3638,17 +3641,17 @@ const AddNewLifeCycleEvent = () => {
                           >
                             +
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation()
                             setRRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
-                              setRREditModal(true)
-                              console.log("add");
-                            }} className="bg-primary text-white mr-1">
+                            e.stopPropagation();
+                            setRREditModal(true)
+                            console.log("add");
+                          }} className="bg-primary text-white mr-1">
                             <EditOutlined />
                           </Button>
                         </span>
@@ -3716,7 +3719,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             rotarRasistRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3733,7 +3736,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             rotarRasistRadioChange("instrument", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3752,7 +3755,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3767,7 +3770,7 @@ const AddNewLifeCycleEvent = () => {
                           placeholder="Type here..."
                           value={statorRotarResistData?.remarks?.value}
                           onChange={(e) => rotarRasistRadioChange("remarks", e)}
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -3810,8 +3813,8 @@ const AddNewLifeCycleEvent = () => {
                           <Button className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
-                            e.stopPropagation(); 
+                          <Button onClick={(e) => {
+                            e.stopPropagation();
                             setRIEditModal(true)
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
@@ -3919,7 +3922,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             rotarInsulationRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3938,7 +3941,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -3955,7 +3958,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             rotarInsulationRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -3998,8 +4001,8 @@ const AddNewLifeCycleEvent = () => {
                           <Button className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
-                            e.stopPropagation(); 
+                          <Button onClick={(e) => {
+                            e.stopPropagation();
                             setPIEditModal(true)
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
@@ -4062,7 +4065,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             polarizationIndexRadioChange("pi", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4100,7 +4103,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             polarizationIndexRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4119,7 +4122,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             polarizationIndexRadioChange("instrument", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4138,7 +4141,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4157,7 +4160,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             polarizationIndexRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -4200,8 +4203,8 @@ const AddNewLifeCycleEvent = () => {
                           <Button className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
-                            e.stopPropagation(); 
+                          <Button onClick={(e) => {
+                            e.stopPropagation();
                             setSCEditModal(true);
                           }} className="bg-primary text-white mr-1">
                             <EditOutlined />
@@ -4228,7 +4231,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("u_v", e)
                           }
-                          // suffix="mΩ"
+                        // suffix="mΩ"
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4247,7 +4250,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("u_w", e)
                           }
-                          // suffix="mΩ"
+                        // suffix="mΩ"
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4264,7 +4267,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("v_w", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4302,7 +4305,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("checked_by", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4321,7 +4324,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("instrument", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4340,7 +4343,7 @@ const AddNewLifeCycleEvent = () => {
                               target: { value: e },
                             })
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -4359,7 +4362,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             surgeCompressionRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
@@ -4378,8 +4381,8 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-               <div className="normal-header-color">
-              <Collapse
+              <div className="normal-header-color">
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -4414,12 +4417,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("heater")
@@ -4550,13 +4553,13 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryHeaterRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-              <Collapse
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -4591,12 +4594,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true);
                             setModalName("thermistor")
@@ -4676,13 +4679,13 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryThermistorRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-              <Collapse
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -4717,12 +4720,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("thermostat")
@@ -4802,13 +4805,13 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryThermostateRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-              <Collapse
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -4843,12 +4846,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("PT_100")
@@ -4928,13 +4931,13 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxillerypt_100RadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-              <Collapse
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -4969,12 +4972,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("brake");
@@ -5156,13 +5159,13 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryBrakeRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-                 <Collapse
+                <Collapse
                   expandIconPosition={"end"}
                   onChange={(data) => console.log(data)}
                   className="mb-3"
@@ -5197,12 +5200,12 @@ const AddNewLifeCycleEvent = () => {
                             +
                           </Button>
                           <Button onClick={(e) => {
-                              e.stopPropagation();
+                            e.stopPropagation();
                             setSRUploadForm(true)
                           }} className="bg-primary text-white mr-1">
                             <WhiteImageIcon />
                           </Button>
-                          <Button onClick={(e)=>{
+                          <Button onClick={(e) => {
                             e.stopPropagation();
                             setSREditModal(true)
                             setModalName("others");
@@ -5229,7 +5232,7 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryOtherRadioChange("test_records", e)
                           }
-                          // suffix="KΩ"
+                        // suffix="KΩ"
                         />
                       </div>
                       <div className="mb-4 d-flex justify-content-between">
@@ -5246,17 +5249,18 @@ const AddNewLifeCycleEvent = () => {
                           onChange={(e) =>
                             auxilleryOtherRadioChange("remarks", e)
                           }
-                          // suffix='mΩ'
+                        // suffix='mΩ'
                         />
                       </div>
                     </div>
                   </Panel>
                 </Collapse>
-               </div>
-                
+              </div>
+
             </Panel>
           </Collapse>
-          <Collapse className="mb-3">
+          <FreeLoadTest setModalName={setModalName} setInitialcondUploaModa={initialcondUploaModal} setInitialeditModal={initialeditModal} receiveAndDelData={receiveAndDelData} data={data} handleRadioChnge={handleRadioChnge} handleRadio1Chnge={ConnectorResistIcon} statorWindingGlobaldata={statorWindingGlobaldata} statorWindingGlobalRadioChange={statorWindingGlobalRadioChange} selectedImages1={selectedImages1} setInitialeditModal={setInitialeditModal} />
+          {/* <Collapse className="mb-3">
             <Panel
               header={
                 <>
@@ -5281,7 +5285,7 @@ const AddNewLifeCycleEvent = () => {
             >
               <p>{text}</p>
             </Panel>
-          </Collapse>
+          </Collapse> */}
           <Collapse className="mb-3">
             <Panel
               header={
