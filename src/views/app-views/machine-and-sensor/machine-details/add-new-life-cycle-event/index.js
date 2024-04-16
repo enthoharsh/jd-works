@@ -37,6 +37,10 @@ import EditStatorResistance from "./Stator-Insulation/Stator_winding_electrical_
 import EditStatorInsulation from "./Stator-Insulation/Stator_winding_electrical_tests/EditStatorInsulation";
 import FreeLoadTest from "./Free-Load-Test/FreeLoadTest";
 import EditFreeLoadTest from "./Free-Load-Test/EditFreeLoadTest";
+import MechanicalInspection from "./Mechanical_Inspection/MechanicalInspection";
+import RotatorShaftRunout from "./Rotator-Shaft-Runout/RotatorShaftRunout";
+import FreeVolumeCheck from "./Free-Volume-Check/FreeVolumeCheck";
+import FlamePathDimension from "./Flame-Path-Dimension/FlamePathDimension";
 
 
 
@@ -4407,6 +4411,7 @@ const AddNewLifeCycleEvent = () => {
                           className="customEditButton"
                           style={{ gap: "5px" }}
                         >
+
                           <Button
                             className="bg-primary text-white mr-1"
                             onClick={(e) => {
@@ -5296,9 +5301,10 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <p>{text}</p>
+              <MechanicalInspection setModalName={setModalName} auxilleryHeaterRadioChange={auxilleryHeaterRadioChange} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
             </Panel>
           </Collapse>
+
           <Collapse className="mb-3">
             <Panel
               header={
@@ -5309,7 +5315,7 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <p>{text}</p>
+              <RotatorShaftRunout setModalName={setModalName} auxilleryHeaterRadioChange={auxilleryHeaterRadioChange} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
             </Panel>
           </Collapse>
           <Collapse className="mb-3">
@@ -5322,7 +5328,7 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <p>{text}</p>
+              <FreeVolumeCheck setModalName={setModalName} auxilleryHeaterRadioChange={auxilleryHeaterRadioChange} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
             </Panel>
           </Collapse>
           <Collapse className="mb-3">
@@ -5335,7 +5341,7 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <p>{text}</p>
+              <FlamePathDimension setModalName={setModalName} auxilleryHeaterRadioChange={auxilleryHeaterRadioChange} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
             </Panel>
           </Collapse>
           <Collapse className="mb-3">
