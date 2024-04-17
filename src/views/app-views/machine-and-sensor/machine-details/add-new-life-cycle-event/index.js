@@ -41,6 +41,7 @@ import MechanicalInspection from "./Mechanical_Inspection/MechanicalInspection";
 import RotatorShaftRunout from "./Rotator-Shaft-Runout/RotatorShaftRunout";
 import FreeVolumeCheck from "./Free-Volume-Check/FreeVolumeCheck";
 import FlamePathDimension from "./Flame-Path-Dimension/FlamePathDimension";
+import MiscelleneousReport from "./MiscellenousReport/MiscelleneousReport";
 
 
 
@@ -5354,7 +5355,7 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <p>{text}</p>
+              <MiscelleneousReport />
             </Panel>
           </Collapse>
         </Space>
