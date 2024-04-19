@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Collapse, Input, Radio } from "antd";
 import {
 
@@ -10,10 +10,13 @@ import {
     EditOutlined,
     HistoryOutlined,
 } from "@ant-design/icons";
-const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxileryChecksHeater, setSRUploadForm, setSREditModal) => {
+import EditMechanicalInspection from './EditMechanicalInspection';
+const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxileryChecksHeater, setSRUploadForm) => {
+    const [editStatus, setEditStatus] = useState(false);
     const { Panel } = Collapse;
     return (
         <>
+            {editStatus && <EditMechanicalInspection editStatus={editStatus} setEditStatus={setEditStatus} />}
             <div className="normal-header-color">
                 <Collapse
                     expandIconPosition={"end"}
@@ -58,8 +61,8 @@ const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxilery
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        // setModalName("heater")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -187,8 +190,8 @@ const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxilery
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        // setModalName("heater")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -315,8 +318,8 @@ const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxilery
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        // setModalName("heater")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -443,8 +446,8 @@ const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxilery
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        // setModalName("heater")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -575,8 +578,8 @@ const MechanicalInspection = (setModalName, auxilleryHeaterRadioChange, auxilery
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        // setModalName("heater")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>

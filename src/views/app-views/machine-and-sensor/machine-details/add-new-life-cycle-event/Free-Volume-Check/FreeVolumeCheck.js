@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Collapse, Input, Radio } from "antd";
 import {
 
@@ -10,10 +10,14 @@ import {
     EditOutlined,
     HistoryOutlined,
 } from "@ant-design/icons";
-const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChecksHeater, setSRUploadForm, setSREditModal }) => {
+import EditFreeVolumeCheck from './EditFreeVolumeCheck';
+const FreeVolumeCheck = ({ auxilleryHeaterRadioChange, auxileryChecksHeater, setSRUploadForm, setSREditModal }) => {
     const { Panel } = Collapse;
+    const [editStatus, setEditStatus] = useState(false);
+    const [modalName, setModalName] = useState("");
     return (
         <>
+            {editStatus && <EditFreeVolumeCheck modalName={modalName} editStatus={editStatus} setEditStatus={setEditStatus} />}
             <div className="normal-header-color">
                 <Collapse
                     expandIconPosition={"end"}
@@ -58,8 +62,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("Frame1")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -170,8 +174,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("Frame2")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -281,8 +285,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("TerminalBox-V3")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -392,8 +396,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("TerminalBox-V4")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -486,8 +490,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("AuxiliaryBox-V5")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -598,8 +602,8 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     </Button>
                                     <Button onClick={(e) => {
                                         e.stopPropagation();
-                                        setSREditModal(true)
-                                        setModalName("heater")
+                                        setEditStatus(true)
+                                        setModalName("Auxilarybox-V6")
                                     }} className="bg-primary text-white mr-1">
                                         <EditOutlined />
                                     </Button>
@@ -644,7 +648,6 @@ const FreeVolumeCheck = ({ setModalName, auxilleryHeaterRadioChange, auxileryChe
                                     suffix="cm"
                                 />
                             </div>
-
                         </div>
                     </Panel>
                 </Collapse>

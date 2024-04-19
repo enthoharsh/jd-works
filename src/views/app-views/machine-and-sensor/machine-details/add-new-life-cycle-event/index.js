@@ -5316,7 +5316,7 @@ const AddNewLifeCycleEvent = () => {
               }
               key="3"
             >
-              <RotatorShaftRunout setModalName={setModalName} auxilleryHeaterRadioChange={auxilleryHeaterRadioChange} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
+              <RotatorShaftRunout handleRadioChnge={handleRadioChnge} setModalName={setModalName} auxileryChecksHeater={auxileryChecksHeater} setSRUploadForm={setSRUploadForm} setSREditModal={setSREditModal} />
             </Panel>
           </Collapse>
           <Collapse className="mb-3">

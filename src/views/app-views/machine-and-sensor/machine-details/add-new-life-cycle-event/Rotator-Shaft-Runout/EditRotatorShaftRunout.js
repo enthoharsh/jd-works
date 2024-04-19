@@ -6,7 +6,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
-const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
+const EditRotatorShaftRunout = ({ setEditStatus, editStatus }) => {
     const [SrModalFormData, setSrModalFormData] = useState({
         v_w_suffix: 'mΩ',
         u1_u2_suffix: 'mΩ',
@@ -45,6 +45,7 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
             width={1000}
         >
             <div className="">
+
                 <div className="mb-4 d-flex justify-content-between align-items-center">
                     <div className="d-flex " style={{ gap: '8px' }}>
                         <Radio.Group
@@ -62,7 +63,39 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
                                 {" "}
                             </Radio>
                         </Radio.Group>
-                        <labek>A-A'</labek>
+                        <labek>Name</labek>
+                        <div>
+                            <Tooltip title="Your tooltip message">
+                                <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
+                            </Tooltip>
+                        </div>
+                    </div>
+                    <Input
+                        style={{ width: "70%" }}
+                        placeholder="Type here..."
+                        value={SrModalFormData?.v1_v2}
+                        onChange={(e) => handleRadioChnge("v1_v2", e)}
+
+                    />
+                </div>
+                <div className="mb-4 d-flex justify-content-between align-items-center">
+                    <div className="d-flex " style={{ gap: '8px' }}>
+                        <Radio.Group
+                            name="v1_v2"
+                            onChange={onRadioChange}
+                            value={SrRadioData?.v1_v2}
+                        >
+                            <Radio className="green-radio" value={1}>
+                                {" "}
+                            </Radio>
+                            <Radio className="red-radio" value={2}>
+                                {" "}
+                            </Radio>
+                            <Radio className="grey-radio" value={3}>
+                                {" "}
+                            </Radio>
+                        </Radio.Group>
+                        <labek>Diameter</labek>
                         <div>
                             <Tooltip title="Your tooltip message">
                                 <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
@@ -84,7 +117,6 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
                         </>)}
                     />
                 </div>
-
                 <div className="mb-4 d-flex justify-content-between align-items-center">
                     <div className="d-flex " style={{ gap: '8px' }}>
                         <Radio.Group
@@ -102,7 +134,46 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
                                 {" "}
                             </Radio>
                         </Radio.Group>
-                        <labek>B-B'</labek>
+                        <labek>Length</labek>
+                        <div>
+                            <Tooltip title="Your tooltip message">
+                                <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
+                            </Tooltip>
+                        </div>
+                    </div>
+                    <Input
+                        style={{ width: "70%" }}
+                        placeholder="Type here..."
+                        value={SrModalFormData?.v1_v2}
+                        onChange={(e) => handleRadioChnge("v1_v2", e)}
+                        addonAfter={(<>
+                            <Select value={SrModalFormData?.v1_v2_suffix} className="select-after" onChange={(e) => handleRadioChnge("v1_v2_suffix", {
+                                target: { value: e },
+                            })} >
+                                <Option value="mΩ">KΩ</Option>
+                                <Option value="Ω">Ω</Option>
+                            </Select>
+                        </>)}
+                    />
+                </div>
+                <div className="mb-4 d-flex justify-content-between align-items-center">
+                    <div className="d-flex " style={{ gap: '8px' }}>
+                        <Radio.Group
+                            name="v1_v2"
+                            onChange={onRadioChange}
+                            value={SrRadioData?.v1_v2}
+                        >
+                            <Radio className="green-radio" value={1}>
+                                {" "}
+                            </Radio>
+                            <Radio className="red-radio" value={2}>
+                                {" "}
+                            </Radio>
+                            <Radio className="grey-radio" value={3}>
+                                {" "}
+                            </Radio>
+                        </Radio.Group>
+                        <labek>A</labek>
                         <div>
                             <Tooltip title="Your tooltip message">
                                 <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
@@ -142,7 +213,7 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
                                 {" "}
                             </Radio>
                         </Radio.Group>
-                        <labek>C-C'</labek>
+                        <labek>B</labek>
                         <div>
                             <Tooltip title="Your tooltip message">
                                 <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
@@ -165,8 +236,86 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
                     />
                 </div>
 
+                <div className="mb-4 d-flex justify-content-between align-items-center">
+                    <div className="d-flex " style={{ gap: '8px' }}>
+                        <Radio.Group
+                            name="u_w"
+                            onChange={onRadioChange}
+                            value={SrRadioData?.u_w}
+                        >
+                            <Radio className="green-radio" value={1}>
+                                {" "}
+                            </Radio>
+                            <Radio className="red-radio" value={2}>
+                                {" "}
+                            </Radio>
+                            <Radio className="grey-radio" value={3}>
+                                {" "}
+                            </Radio>
+                        </Radio.Group>
+                        <labek>C</labek>
+                        <div>
+                            <Tooltip title="Your tooltip message">
+                                <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
+                            </Tooltip>
+                        </div>
+                    </div>
 
+                    <Input
+                        style={{ width: "70%" }}
+                        placeholder="Type here..."
+                        value={SrModalFormData?.u_w}
+                        onChange={(e) => handleRadioChnge("u_w", e)}
+                        addonAfter={(<>
+                            <Select value={SrModalFormData?.u_w_suffix} className="select-after" onChange={(e) => handleRadioChnge("u_w_suffix", {
+                                target: { value: e },
+                            })} >
+                                <Option value="mΩ">KΩ</Option>
+                                <Option value="Ω">Ω</Option>
+                            </Select>
+                        </>)}
+                    />
+                </div>
 
+                <div className="mb-4 d-flex justify-content-between align-items-center">
+                    <div className="d-flex " style={{ gap: '8px' }}>
+                        <Radio.Group
+                            name="v_w"
+                            onChange={onRadioChange}
+                            value={SrRadioData?.v_w}
+                        >
+                            <Radio className="green-radio" value={1}>
+                                {" "}
+                            </Radio>
+                            <Radio className="red-radio" value={2}>
+                                {" "}
+                            </Radio>
+                            <Radio className="grey-radio" value={3}>
+                                {" "}
+                            </Radio>
+                        </Radio.Group>
+                        <labek>D</labek>
+                        <div>
+                            <Tooltip title="Your tooltip message">
+                                <QuestionCircleOutlined style={{ marginLeft: '4px', color: '#1890ff' }} />
+                            </Tooltip>
+                        </div>
+                    </div>
+                    <Input
+                        style={{ width: "70%" }}
+                        placeholder="Type here..."
+                        value={SrModalFormData?.v_w}
+                        onChange={(e) => handleRadioChnge("v_w", e)}
+                        addonAfter={(<>
+                            <Select value={SrModalFormData?.v_w_suffix} className="select-after" onChange={(e) => handleRadioChnge("v_w_suffix", {
+                                target: { value: e },
+                            })} >
+                                <Option value="mΩ">KΩ</Option>
+                                <Option value="Ω">Ω</Option>
+                            </Select>
+                        </>)}
+                    />
+                </div>
                 <div className="mb-4 d-flex justify-content-between align-items-center">
                     <div className="d-flex " style={{ gap: '8px' }}>
                         <Radio.Group
@@ -228,4 +377,4 @@ const EditMechanicalInspection = ({ setEditStatus, editStatus }) => {
     )
 }
 
-export default EditMechanicalInspection
+export default EditRotatorShaftRunout
